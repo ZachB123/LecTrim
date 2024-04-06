@@ -1,0 +1,7 @@
+pydub
+moviepy
+SpeechRecognition
+pocketsphinx
+numpy
+scipy
+pydub

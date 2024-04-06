@@ -1,4 +1,13 @@
 # LectureShortener
+
+## Usage
+
+python lecture_shortener.py -i <input_file_path> -o <output_file_path> --wpm <wpm> --filler-prune --tik-tokify
+
+-i and -o are required
+default values are wpm=320 --filler-prune is set 
+--filler-prune and --tiktokify default to false
+
 For GT1201, Takes in a lecture video and reduces it into a more consumable format
 
 - git add .

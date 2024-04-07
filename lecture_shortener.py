@@ -30,7 +30,7 @@ def get_video_length(video_path):
 def main():
     video_path = "Input/TrimmedCredmeteseLecture.mp4"
     output_path = "Output/TrimmedOut.mp4"
-    wpm_adjust(video_path, output_path)
+    wpm_adjust(video_path, output_path, 280)
     # wpm = calculate_wpm("CredmeteseMidtermLecture.mp4")
     # length = get_video_length(video_path)
     # wpm = calculate_wpm(video_path)

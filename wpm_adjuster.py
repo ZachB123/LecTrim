@@ -3,6 +3,7 @@ import speech_recognition as sr
 from pydub.playback import play
 import moviepy.editor as mp
 from moviepy.editor import *
+import whisper_timestamped as whisper
 
 TARGET_WPM = 320
 
@@ -21,13 +22,19 @@ def calculate_wpm(video_path):
     convert_video_path_to_mp3(video, audio_path)
 
     # Use speech recognition to transcribe audio
-    recognizer = sr.Recognizer()
-    audio = None
-    with sr.AudioFile(audio_path) as source:
-        audio = recognizer.record(source)
-
+    # recognizer = sr.Recognizer()
+    # audio = None
+    # with sr.AudioFile(audio_path) as source:
+    #     audio = recognizer.record(source)
+    
     print("Calculating WPM")
-    text = recognizer.recognize_sphinx(audio)
+    audio = whisper.load_audio(audio_path)
+    model = whisper.load_model("tiny", device="cpu")
+    result = whisper.transcribe(model, audio, detect_disfluencies=True, language="en")
+
+
+    # text = recognizer.recognize_sphinx(audio)
+    text = result["text"]
 
     # Calculate WPM
     word_count = len(text.split())

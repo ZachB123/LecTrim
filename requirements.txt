@@ -5,3 +5,4 @@ pocketsphinx
 numpy
 scipy
 pydub
+whisper-timestamped

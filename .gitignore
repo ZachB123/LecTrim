@@ -1,2 +1,7 @@
 venv/
 __pycache__/
+Input/
+Output/
+SubwaySurfers.mp4
+ShortenedSubwaySurfers.mp4
+__pycache__

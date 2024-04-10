@@ -1,5 +1,5 @@
-from moviepy.editor import VideoFileClip
 import os
+from moviepy.editor import VideoFileClip
 
 def tiktokify(input_path, output_directory, duration):
     os.makedirs(output_directory, exist_ok=True)
@@ -17,5 +17,6 @@ def tiktokify(input_path, output_directory, duration):
         output_path = os.path.join(output_directory, f"clip_{i+1}.mp4")
         clip.write_videofile(output_path)
 
-    video_clip.close()
+    # video_clip.close()
+
 

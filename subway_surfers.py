@@ -17,10 +17,6 @@ def crop_rectangular_section(input_file, output_file, top_left_x, top_left_y, wi
     # Write the final clip to a new file
     final_clip.write_videofile(output_file, codec="libx264")
     
-    # Close the clips
-    clip.close()
-    cropped_clip.close()
-    final_clip.close()
 
 def loop_clip(video_path, target_duration, audio=False):
     original_clip = VideoFileClip(video_path, audio=audio)
@@ -38,12 +34,11 @@ def loop_clip(video_path, target_duration, audio=False):
 
     return final_clip
 
-def overlap_subway_surfers(video_path):
-    video_clip = VideoFileClip(video_path)
+def overlap_subway_surfers(video_clip):
     # width = video_clip.size[0]
     video_height = video_clip.size[1]
     duration = video_clip.duration
-    subway_surfers_clip = loop_clip("ShortenedSubwaySurfers.mp4", duration)
+    subway_surfers_clip = loop_clip("Assets/ShortenedSubwaySurfers.mp4", duration)
     # subway_surfers_clip.resize((height / 3, (height / 3) * (576 / 1280)))
     subway_surfers_clip = subway_surfers_clip.resize(height=(video_height/2))
 
@@ -52,31 +47,6 @@ def overlap_subway_surfers(video_path):
     # # Composite the Subway Surfers clip on top of the video clip
     composite_clip = CompositeVideoClip([video_clip.set_position((0, 0)), subway_surfers_clip.set_position(subway_surfers_position)])
 
-    composite_clip.write_videofile(video_path)
-    # return composite_clip
+    return composite_clip
     
 
-if __name__ == "__main__":
-    clip = overlapy_subway_surfers("Input/TrimmedCredmeteseLecture.mp4")
-    clip.write_videofile("test.mp4")
-    # # clip.write_com("test.mp4", codec="libx264", bitrate="1000k")
-    # clip.close()
-    # vid = loop_clip("ShortenedSubwaySurfers.mp4", 900)
-    # vid.duration = 900
-    # vid.write_videofile("test.mp4")
-    # width is 576
-    # height is 1280
-    # Example usage:
-    # input_file = "ShortenedSubwaySurfers.mp4"
-    # input_file = "Input/TrimmedCredmeteseLecture.mp4"
-
-    # input_file_clip = VideoFileClip(input_file)
-    # input_width = input_file_clip.size[0]
-    # input_height = input_file_clip.size[1]
-    # output_file = "CroppedSubwaySurfers.mp4"
-    # top_left_x = input_width / 3  # X-coordinate of the top-left corner of the rectangular section
-    # top_left_y = 0  # Y-coordinate of the top-left corner of the rectangular section
-    # width = input_width / 3  # Width of the rectangular section
-    # height = input_height  # Height of the rectangular section
-    # print(f"tlx: {top_left_x}, tly: {top_left_y}, width: {width}, height: {height}, input_width: {input_width}, input_height: {input_height}")
-    # crop_rectangular_section(input_file, output_file, top_left_x, top_left_y, width, height)
